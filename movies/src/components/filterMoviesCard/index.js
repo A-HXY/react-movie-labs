@@ -39,9 +39,9 @@ const formControl =
     }, []);
   
     const handleChange = (e, type, value) => {
-      e.preventDefault();
-      console.log(`Type: ${type}, Value: ${value}`);
-    };
+        e.preventDefault()
+        props.onUserInput(type, value)   // NEW
+      }
  
     const handleTextChange = e => {
       setSearchText(e.target.value);
