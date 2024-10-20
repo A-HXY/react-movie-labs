@@ -1,3 +1,4 @@
+import { getGenres } from "../../api/tmdb-api";
 import React, {useState, useEffect}  from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -25,18 +26,11 @@ const formControl =
     const [selectedGenre, setSelectedGenre] = useState('0');
 
     useEffect(() => {
-      fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-          process.env.REACT_APP_TMDB_KEY
-      )
-        .then(res => res.json())
-        .then(json => {
-          return json.genres;
-        })
-        .then(apiGenres => {
-          setGenres([genres[0], ...apiGenres]); 
-        });
-    }, []);
+      getGenres().then((allGenres) => {
+        setGenres([genres[0], ...allGenres]);
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
   
     const handleChange = (e, type, value) => {
         e.preventDefault()
