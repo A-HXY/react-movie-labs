@@ -1,3 +1,4 @@
+import AddMovieReviewPage from './pages/addMovieReviewPage'
 import MoviesContextProvider from "./contexts/moviesContext";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={ <Navigate to="/" /> } />
+            <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
