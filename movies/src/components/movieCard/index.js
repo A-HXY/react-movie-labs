@@ -1,4 +1,4 @@
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+
 import React, { useContext  } from "react";
 import { MoviesContext } from "../../context/moviesContext";
 import Avatar from '@mui/material/Avatar';
@@ -79,9 +79,7 @@ export default function MovieCard({ movie, action }) {
         <Button variant="outlined" size="medium" color="primary">
           More Info ...
         </Button>
-        <Button size="small" color="primary">
-          <PlaylistAddIcon sx={{ fontSize: 24, color: 'primary.main' }} />
-        </Button>
+        
       </Link>
 
     </CardActions>
