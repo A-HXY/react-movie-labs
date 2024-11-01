@@ -4,13 +4,14 @@ import IconButton from "@mui/material/IconButton";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { Card } from "@mui/material";
 
-const AddToFavoritesIcon = ({ movie }) => {
+const AddToPlaylistIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
 
   const handleAddToPlaylist = (e) => {
     e.preventDefault();
-    context.addToPlaylist(movie);
+    context.addToMustWatch(movie);
   };
+
 
   return (
         <IconButton aria-label="add to playlist" onClick={handleAddToPlaylist}>
@@ -19,4 +20,4 @@ const AddToFavoritesIcon = ({ movie }) => {
   );
 };
 
-export default AddToFavoritesIcon;
+export default AddToPlaylistIcon;
