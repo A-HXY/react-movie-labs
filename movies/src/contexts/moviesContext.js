@@ -23,10 +23,25 @@ const MoviesContextProvider = (props) => {
     ) )
   };
 
+  
   const addReview = (movie, review) => {
     setMyReviews( {...myReviews, [movie.id]: review } )
   };
   //console.log(myReviews);
+
+  const [mustWatch, setMustWatch] = useState( [] )
+
+  const addToPlaylist = (movie) => {
+    let newMustWatch = [];
+    if (!mustWatch.includes(movie.id)){
+      newMustWatch = [...mustWatch, movie.id];
+    }
+    else{
+      newMustWatch = [...mustWatch];
+    }
+    setMustWatch(newMustWatch);
+   console.log(newMustWatch);
+  };
 
  return (
     <MoviesContext.Provider

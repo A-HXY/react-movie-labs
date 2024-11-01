@@ -1,4 +1,5 @@
-import UpcomingMoviesPage from './pages/UpcomingMoviesPage'
+import UpcomingPage from './pages/upcomingPage'
+import NowPlayingPage from './pages/nowPlayingPage'
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import MoviesContextProvider from "./contexts/moviesContext";
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -35,7 +36,8 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={ <Navigate to="/" /> } />
             <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
-            <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+            <Route path="/movies/upcoming" element={<UpcomingPage />} />
+            <Route path="/movies/nowplaying" element={<NowPlayingPage />} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>

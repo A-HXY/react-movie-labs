@@ -1,3 +1,4 @@
+import React from "react";
 import Spinner from '../spinner'
 import { useQuery } from "react-query";
 import MovieHeader from "../headerMovie";
@@ -7,9 +8,9 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { getMovieImages } from "../../api/tmdb-api";
 
 const TemplateMoviePage = ({ movie, children }) => {
-  const { data , error, isLoading, isError } = useQuery(
-    ["images", { id: movie.id }],
-    getMovieImages
+  const { data, error, isLoading, isError } = useQuery(
+    ["images", { id: movie.Id }],
+    getMovieImages,
   );
 
   if (isLoading) {
@@ -20,6 +21,7 @@ const TemplateMoviePage = ({ movie, children }) => {
     return <h1>{error.message}</h1>;
   }
   const images = data.posters 
+
   return (
     <>
       <MovieHeader movie={movie} />
