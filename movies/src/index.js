@@ -1,7 +1,7 @@
 import UpcomingPage from './pages/upcomingPage'
 import NowPlayingPage from './pages/nowPlayingPage'
 import AddMovieReviewPage from './pages/addMovieReviewPage'
-import MoviesContextProvider from "./contexts/moviesContext";
+import MoviesContextProvider from "./context/moviesContext";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import SiteHeader from './components/siteHeader'

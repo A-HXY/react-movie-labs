@@ -1,6 +1,6 @@
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import React, { useContext  } from "react";
-import { MoviesContext } from "../../contexts/moviesContext";
+import { MoviesContext } from "../../context/moviesContext";
 import Avatar from '@mui/material/Avatar';
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
