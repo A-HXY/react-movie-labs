@@ -1,5 +1,5 @@
 import React from "react";
-import { getNowPlayingMovies } from "../api/tmdb-api";
+import { getNowPlaying } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
@@ -7,7 +7,7 @@ import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist'
 
 const NowPlayingPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getNowPlayingMovies)
+  const {  data, error, isLoading, isError }  = useQuery('nowplaying', getNowPlaying)
 
   if (isLoading) {
     return <Spinner />

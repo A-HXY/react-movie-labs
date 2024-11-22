@@ -8,8 +8,9 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { getMovieImages } from "../../api/tmdb-api";
 
 const TemplateMoviePage = ({ movie, children }) => {
+  console.log(movie);
   const { data, error, isLoading, isError } = useQuery(
-    ["images", { id: movie.Id }],
+    ["images", { id: movie.id }],
     getMovieImages,
   );
 
