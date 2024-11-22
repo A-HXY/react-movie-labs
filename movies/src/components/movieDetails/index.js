@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
+import React, { useState, useContext } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -9,6 +7,11 @@ import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
+import Drawer from "@mui/material/Drawer";
+import MovieReviews from "../movieReviews"
+import { useQuery } from "react-query";
+import { getActors } from "../../api/tmdb-api";
+import {Link} from "react-router-dom"
 
 
 const root = {
@@ -23,6 +26,21 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const { data, error, isLoading, isError } = useQuery(
+      ["movieActors", { id: movie.id}],
+      getActors
+    )
+
+    if (isLoading) {
+      return <p>Loading...</p>
+    }
+
+    if (isError) {
+      return <p>{error.message}</p>
+    }
+
+    const actors = data.cast || [];
 
   return (
     <>
@@ -61,6 +79,21 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         />
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
+
+      <Paper
+         component="ul" 
+         sx={{...root}}>
+          <li>
+            <Chip label="Actors" sx={{...chip}} color="primary" />
+          </li>
+          {actors.map((actors) => (
+            <li key={actors.id}>
+              <Link to={`/actors/${actors.id}`}>
+                <Chip label={actors.name} sx={{...chip}}/>
+              </Link> 
+            </li>
+          ))}
+        </Paper>
 
       <Paper 
         component="ul" 
