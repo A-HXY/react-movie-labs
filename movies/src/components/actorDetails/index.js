@@ -14,9 +14,6 @@ const ActorDetails = ({ actor }) => {
         getActorCredits
       );
 
-    const [expanded, setExpanded] = useState(false); 
-    const toggleExpanded = () => setExpanded(!expanded);
-
     if (isLoading) {
       return <p>Loading...</p>
     }
@@ -55,7 +52,6 @@ const ActorDetails = ({ actor }) => {
                   display: "-webkit-box",
                   overflow: "hidden",
                   WebkitBoxOrient: "vertical",
-                  WebkitLineClamp: expanded ? "none" : 5, 
                   textOverflow: "ellipsis",
                 }}
               >
