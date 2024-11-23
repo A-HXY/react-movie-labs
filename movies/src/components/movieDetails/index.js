@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import { useQuery } from "react-query";
-import { getActors } from "../../api/tmdb-api";
+import { getMovieActors } from "../../api/tmdb-api";
 import {Link} from "react-router-dom"
 
 
@@ -29,7 +29,7 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
     const { data, error, isLoading, isError } = useQuery(
       ["movieActors", { id: movie.id}],
-      getActors
+      getMovieActors
     )
 
     if (isLoading) {
