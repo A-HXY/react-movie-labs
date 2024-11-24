@@ -88,9 +88,9 @@ export const getMovieReviews = ({ queryKey }) => {
  });
 };
 
-export const getUpcomingMovies = ({}) => {
+export const getUpcomingMovies = (page) => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}`
   ).then((response) => {
     if (!response.ok) {
       return response.json().then((error) => {
@@ -100,31 +100,15 @@ export const getUpcomingMovies = ({}) => {
     return response.json();
   })
   .catch((error) => {
-      throw error
+      throw error;
   });
 };
 
-export const getPopularMovies = ({}) => {
-      return fetch(
-         `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-       ).then((response) => {
-        if(!response.ok) {
-      return response.json().then((error) => {
-        throw new Error(error.status_message || "Something went wrong");
-        });
-      }
-      return response.json();
-      })
-     .catch((error) => {
-      throw error
-      });
-    }
-
-export const getNowPlaying = ({}) => {
+export const getPopularMovies = (page) => {
   return fetch(
-   `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
   ).then((response) => {
-    if(!response.ok) {
+    if (!response.ok) {
       return response.json().then((error) => {
         throw new Error(error.status_message || "Something went wrong");
       });
@@ -132,8 +116,26 @@ export const getNowPlaying = ({}) => {
     return response.json();
   })
   .catch((error) => {
-    throw error
+      throw error;
   });
+};
+
+
+export const getNowPlaying = (page = 1) => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=${page}`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export const getMovieActors = ({ queryKey }) => {
